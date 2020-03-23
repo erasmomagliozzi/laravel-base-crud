@@ -13,14 +13,13 @@ class CreateTechsTable extends Migration
      */
     public function up()
     {
-        Schema::create('techs', function (Blueprint $table) {
+        Schema::create('teches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->float('price', 8, 2);
             $table->float('expedition price', 8, 2);
             $table->string('shop');
             $table->string('description');
-            // $table->string('shipping times');
 
             $table->timestamps();
         });

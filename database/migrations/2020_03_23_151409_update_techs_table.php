@@ -13,7 +13,7 @@ class UpdateTechsTable extends Migration
      */
     public function up()
     {
-      Schema::table('techs', function (Blueprint $table) {
+      Schema::table('teches', function (Blueprint $table) {
       $table->string('shipping times');
 
       });
@@ -26,6 +26,8 @@ class UpdateTechsTable extends Migration
      */
     public function down()
     {
-    $table->string('shipping times');
+      Schema::table('teches', function (Blueprint $table) {
+      $table->dropColumn('shipping times');
+      });
     }
 }
