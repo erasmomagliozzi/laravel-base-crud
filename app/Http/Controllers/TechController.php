@@ -7,6 +7,13 @@ use App\Tech;
 
 class TechController extends Controller
 {
+  private $validationTech = [
+      'name' => 'required|string|max:255',
+      'price' => 'required|numeric|min:1',
+      'shop' => 'required|max:255',
+      'description' => 'required|string',
+      'shipping_times' => 'required|max:255'
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -68,9 +75,22 @@ class TechController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    // public function show($id)
+    // {
+    //   $tech = Tech::find($id);
+    //   if(empty($tech)){
+    //     abort('404');
+    //   }
+    //   return view('teches.show', compact('tech'));
+    // }
+
+    public function show(Tech $tech)
     {
-        //
+      // $tech = Tech::find($id);
+      if(empty($tech)){
+        abort('404');
+      }
+      return view('teches.show', compact('tech'));
     }
 
     /**
@@ -79,9 +99,12 @@ class TechController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tech $tech)
     {
-        //
+      if(empty($tech)){
+        abort('404');
+      }
+        return view('teches.create', compact('tech'));
     }
 
     /**
@@ -93,7 +116,15 @@ class TechController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tech = Tech::find($id);
+        if(empty($tech)){
+          abort('404');
+        }
+
+        $data = $request->all();
+        $request->validate($this->validationTech);
+        $updated = $tech->update($data);
+        dd($updated);
     }
 
     /**
