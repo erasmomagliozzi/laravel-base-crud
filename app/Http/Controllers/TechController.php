@@ -37,19 +37,16 @@ class TechController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = $request->all();
-        // $tech = new Tech;
-        // $tech->name = $data['name'];
-        // $tech->price = $data['price'];
-        // $tech->shop = $data['shop'];
-        // $tech->description = $data['description'];
-        //
-        // $tech->save();
+       $data = $request->all();
 
-        $data = $request->all();
-
-
-        $newTech = new Tech;
+       $request->validate([
+         'name' => 'required|string|max:255',
+         'price' => 'required|numeric|min:1',
+         'shop' => 'required|max:255',
+         'description' => 'required|string',
+         'shipping_times' => 'required|max:255'
+       ]);
+       $newTech = new Tech;
         // $newTech->name = $data['name'];
         // $newTech->price = $data['price'];
         // $newTech->shop = $data['shop'];

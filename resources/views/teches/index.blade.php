@@ -5,7 +5,10 @@
     <title></title>
   </head>
   <body>
-    <h1>TUTTE LE SCARPE</h1>
+    <header>
+      <h1>TUTTE LE SCARPE</h1>
+    
+    </header>
     @foreach ($teches as $tech)
     <div class="tech">
       <ul>

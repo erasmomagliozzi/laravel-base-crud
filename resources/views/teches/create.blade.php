@@ -5,6 +5,17 @@
     <title></title>
   </head>
   <body>
+    <header>
+      @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+        </div>
+      @endif
+    </header>
     <form class="" action="{{route('teches.store')}}" method="post">
       @csrf
       <input type="text" name="name" value="" placeholder="name">
