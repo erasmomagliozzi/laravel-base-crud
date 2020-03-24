@@ -8,10 +8,15 @@
     <form class="" action="{{route('teches.store')}}" method="post">
       @csrf
       <input type="text" name="name" value="" placeholder="name">
+
       <input type="text" name="price" value="" placeholder="price">
 
       <input type="text" name="shop" value="" placeholder="shop">
+
       <input type="text" name="description" value="" placeholder="description">
+
+      <input type="text" name="shipping_times"
+      placeholder="shipping_times" value="">
 
       <button type="submit" name="button">invia</button>
 

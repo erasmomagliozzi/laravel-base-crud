@@ -15,7 +15,8 @@ class TechController extends Controller
     public function index()
     {
         $teches = Tech::all();
-        dd($teches);
+        return view('teches.index', compact('teches'));
+
     }
 
     /**
@@ -36,16 +37,31 @@ class TechController extends Controller
      */
     public function store(Request $request)
     {
+        // $data = $request->all();
+        // $tech = new Tech;
+        // $tech->name = $data['name'];
+        // $tech->price = $data['price'];
+        // $tech->shop = $data['shop'];
+        // $tech->description = $data['description'];
+        //
+        // $tech->save();
+
         $data = $request->all();
-        $tech = new Tech;
-        $tech->name = $data['name'];
-        $tech->price = $data['price'];
-
-        $tech->shop = $data['shop'];
-        $tech->description = $data['description'];
 
 
-        $tech->save();
+        $newTech = new Tech;
+        // $newTech->name = $data['name'];
+        // $newTech->price = $data['price'];
+        // $newTech->shop = $data['shop'];
+        // $newTech->description = $data['description'];
+        // $newTech->expediction_price = $data['expediction price'];
+        $newTech->fill($data);
+        $saved = $newTech->save();
+
+        if($saved) {
+          return redirect()->route('teches.index');
+        }
+        dd('non salvato');
 
     }
 

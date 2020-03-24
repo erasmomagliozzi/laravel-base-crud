@@ -10,7 +10,7 @@ class Tech extends Model
     [
       'name',
       'price',
-      'expedition price',
+      'shipping_times',
       'shop',
       'description'
     ];
